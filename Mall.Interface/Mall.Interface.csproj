@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mall.Common\Mall.Common.csproj" />
+    <ProjectReference Include="..\Mall.Model\Mall.Model.csproj" />
+  </ItemGroup>
+
+</Project>
