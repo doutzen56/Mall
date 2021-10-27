@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -20,13 +21,12 @@ namespace Mall.Common.Ioc
         /// <returns></returns>
         public static IServiceCollection DefaultRegister(this IServiceCollection services)
         {
-            #region 
-
-            #endregion
-            var allTypes = System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll").Select(Assembly.LoadFrom).ToArray()
-                            .Where(a => a.GetName().FullName.StartsWith("Mall."))
-                            .SelectMany(a => a.GetTypes().Where(t => t.GetInterfaces().Any(p => p == typeof(ITransient))))
-                            .ToList();
+           
+            var allTypes = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
+                          .Select(Assembly.LoadFrom)
+                          .Where(a => a.GetName().FullName.StartsWith("Mall."))
+                          .SelectMany(a => a.GetTypes().Where(t => t.GetInterfaces().Any(p => p == typeof(ITransient))))
+                          .ToList();
             //var allTypes = new List<Type>();
             //foreach (var item in assemblies)
             //{

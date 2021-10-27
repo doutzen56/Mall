@@ -22,16 +22,7 @@ namespace Mall.Portal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            #region ¿çÓòÅäÖÃ
-            services.AddCors(options =>
-            {
-                options.AddPolicy("default", policy =>
-                {
-                    policy.WithOrigins(new string[] { "http://localhost:36199/" });
-                });
-            });
-            #endregion
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,15 +41,11 @@ namespace Mall.Portal
 
             app.UseRouting();
 
-            app.UseCors("default");
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Mall.Core.Repositories.Interface;
 using Mall.Interface.Service;
+using Mall.Model.DTO;
 using Mall.Model.Models;
 
 namespace Mall.Service
@@ -15,6 +16,14 @@ namespace Mall.Service
         {
             return goodsRes.Add(goods) > 0;
         }
+
+        public bool DecreaseStock(Cart cart)
+        {
+            var result = true;
+
+            return result;
+        }
+
         /// <summary>
         /// 按需更新
         /// </summary>

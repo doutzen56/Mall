@@ -7,14 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repository\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <None Remove="Repository\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repository\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +25,6 @@
     <ProjectReference Include="..\Mall.Interface\Mall.Interface.csproj" />
     <ProjectReference Include="..\Mall.Model\Mall.Model.csproj" />
     <ProjectReference Include="..\Mall.Service\Mall.Service.csproj" />
-    <ProjectReference Include="..\Mall.UserService\Mall.UserService.csproj" />
   </ItemGroup>
 
 </Project>

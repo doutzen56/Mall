@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mall.Model.Models
 {
@@ -27,6 +22,29 @@ namespace Mall.Model.Models
         /// </summary>    
         [Display(Name = "Code")]
         public string Code { get; set; }
-        
+
+        /// <summary>
+        /// 颜色
+        /// </summary>    
+        [Display(Name = "Color")]
+        public int Color { get; set; }
+
+        /// <summary>
+        /// 价格
+        /// </summary>    
+        [Display(Name = "Price")]
+        public double Price { get; set; }
+
+        /// <summary>
+        /// 价格
+        /// </summary>    
+        [Display(Name = "Status")]
+        public double Status { get; set; }
+
+        /// <summary>
+        /// 库存
+        /// </summary>    
+        [Display(Name = "Stock")]
+        public int Stock { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Mall.Model.Models;
+﻿using Mall.Model.DTO;
+using Mall.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,15 @@ namespace Mall.Interface.Service
 {
     public interface IGoodsService : ServiceBase
     {
+
         bool Add(Goods goods);
 
         bool Update(Goods goods);
+        /// <summary>
+        /// 缩减库存
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
+        bool DecreaseStock(Cart cart);
     }
 }

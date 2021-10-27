@@ -23,7 +23,7 @@ namespace Mall.Core.Filter
             //如果异常未被处理
             if (!context.ExceptionHandled)
             {
-                context.Result = new JsonResult(new ApiResult
+                context.Result = new JsonResult(new RespResult
                 {
                     Msg="操作失败！",
                     Status=500,
