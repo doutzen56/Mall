@@ -2,10 +2,11 @@
 using Mall.Interface.Service;
 using Mall.Model.DTO;
 using Mall.Model.Models;
+using System;
 
 namespace Mall.Service
 {
-    public class GoodsService: IGoodsService
+    public class GoodsService : IGoodsService
     {
         private IRepository<Goods> goodsRes;
         public GoodsService(IRepository<Goods> goodsRes)
@@ -17,21 +18,29 @@ namespace Mall.Service
             return goodsRes.Add(goods) > 0;
         }
 
-        public bool DecreaseStock(Cart cart)
+        public void DecreaseStock(Cart cart)
         {
-            var result = true;
-
-            return result;
+            var stock = goodsRes.GetEx(a => a.Id == cart.GoodsId, rs => rs.Stock);
+            if (cart.Count > stock)
+            {
+                throw new Exception("库存不足,扣减失败");
+            }
+            else
+            {
+                goodsRes.Update(
+                    a => a.Id == cart.GoodsId, 
+                    u => new Goods { Stock = u.Stock - cart.Count });
+            }
         }
 
         /// <summary>
-        /// 按需更新
+        /// 更新
         /// </summary>
         /// <param name="goods"></param>
         /// <returns></returns>
         public bool Update(Goods goods)
         {
-            return goodsRes.Update(a => a.Id == goods.Id, u => new Goods { Name = goods.Name }) > 0;
+            return goodsRes.Update(goods) > 0;
         }
     }
 }

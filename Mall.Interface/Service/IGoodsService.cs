@@ -19,6 +19,6 @@ namespace Mall.Interface.Service
         /// </summary>
         /// <param name="cart"></param>
         /// <returns></returns>
-        bool DecreaseStock(Cart cart);
+        void DecreaseStock(Cart cart);
     }
 }

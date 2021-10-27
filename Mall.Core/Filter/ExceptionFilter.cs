@@ -10,7 +10,7 @@ namespace Mall.Core.Filter
     /// <summary>
     /// 全局异常拦截器，用于捕获系统未处理异常
     /// </summary>
-    public class ExceptionFilter: IExceptionFilter
+    public class ExceptionFilter : IExceptionFilter
     {
         private ILogger<ExceptionFilter> logger = null;
         public ExceptionFilter(ILogger<ExceptionFilter> logger)
@@ -25,9 +25,9 @@ namespace Mall.Core.Filter
             {
                 context.Result = new JsonResult(new RespResult
                 {
-                    Msg="操作失败！",
-                    Status=500,
-                    Data=context.Exception.Message
+                    Msg = "操作失败！",
+                    Status = 500,
+                    Data = context.Exception.Message
                 });
                 var url = context.HttpContext.Request.Path.Value;
                 var actionName = context.ActionDescriptor.DisplayName;
