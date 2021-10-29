@@ -2,11 +2,12 @@
 using Mall.Interface.Service;
 using Mall.Model.DTO;
 using Mall.Model.Models;
+using Mall.Service.Base;
 using System;
 
 namespace Mall.Service
 {
-    public class GoodsService : IGoodsService
+    public class GoodsService : ServiceBase, IGoodsService
     {
         private IRepository<Goods> goodsRes;
         public GoodsService(IRepository<Goods> goodsRes)
@@ -18,7 +19,7 @@ namespace Mall.Service
             return goodsRes.Add(goods) > 0;
         }
 
-        public void DecreaseStock(Cart cart)
+        public void DecreaseStock(CartDto cart)
         {
             var stock = goodsRes.GetEx(a => a.Id == cart.GoodsId, rs => rs.Stock);
             //判断库存是否充足

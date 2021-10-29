@@ -1,15 +1,11 @@
 ﻿using Mall.Core.Repositories.Interface;
 using Mall.Interface.Service;
 using Mall.Model.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Mall.Service.Base;
 
 namespace Mall.Service
 {
-    public class MemberService : IMemberService
+    public class MemberService : ServiceBase, IMemberService
     {
         private IRepository<Member> userRes;
         public MemberService(IRepository<Member> userRes)

@@ -1,12 +1,13 @@
 ﻿using Mall.Core.Redis;
 using Mall.Interface.Service;
 using Mall.Model.DTO;
+using Mall.Service.Base;
 using System;
 using System.Collections.Generic;
 
 namespace Mall.Service
 {
-    public class CartService : ICartService
+    public class CartService : ServiceBase, ICartService
     {
         private RedisProvider redis;
         public CartService(RedisProvider redis)
@@ -17,7 +18,7 @@ namespace Mall.Service
         /// 缓存统一前缀标识
         /// </summary>
         private static readonly string KEY_PREFIX = "mall:cart:uid:";
-        public void AddCart(Cart cart, UserInfo user)
+        public void AddCart(CartDto cart, UserInfo user)
         {
             // 获取用户信息
             string key = KEY_PREFIX + user.Id;
@@ -29,7 +30,7 @@ namespace Mall.Service
             var hashOps = redis.GetHashKeys(key);
             if (hashOps.Contains(hashKey))
             {
-                cart = redis.GetValueFromHash<Cart>(key, hashKey);
+                cart = redis.GetValueFromHash<CartDto>(key, hashKey);
                 cart.Count = num + cart.Count;
             }
             redis.SetEntryInHash(key, hashKey, cart);
@@ -49,7 +50,7 @@ namespace Mall.Service
             }
         }
 
-        public List<Cart> ListCart(UserInfo user)
+        public List<CartDto> ListCart(UserInfo user)
         {
             //获取该用户Redis中的key
             string key = KEY_PREFIX + user.Id;
@@ -62,10 +63,10 @@ namespace Mall.Service
             {
                 return null;
             }
-            List<Cart> carts = new List<Cart>();
+            List<CartDto> carts = new List<CartDto>();
             foreach (var item in hashOps)
             {
-                carts.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<Cart>(item));
+                carts.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<CartDto>(item));
             }
             return carts;
         }
@@ -81,7 +82,7 @@ namespace Mall.Service
                 throw new Exception("购物车商品不存在, 用户：" + user.Id + ", 商品：" + id);
             }
             //查询购物车商品
-            var cart = redis.GetValueFromHash<Cart>(key, id.ToString());
+            var cart = redis.GetValueFromHash<CartDto>(key, id.ToString());
             //修改数量
             cart.Count = num;
             // 回写Redis

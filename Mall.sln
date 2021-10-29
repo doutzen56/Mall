@@ -29,13 +29,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{5E0C04
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Hubs", "Mall.Hubs\Mall.Hubs.csproj", "{7C79277A-5973-43CA-8E17-460E2C384CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Portal", "Mall.Portal\Mall.Portal.csproj", "{9673C9EC-5635-4D44-8F44-DA5B7294D4F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Portal", "Mall.Portal\Mall.Portal.csproj", "{9673C9EC-5635-4D44-8F44-DA5B7294D4F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Admin", "Mall.Admin\Mall.Admin.csproj", "{1345B982-A221-4DC9-AC7E-1E92D0F47C5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Admin", "Mall.Admin\Mall.Admin.csproj", "{1345B982-A221-4DC9-AC7E-1E92D0F47C5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.OpenApi", "Mall.OpenApi\Mall.OpenApi.csproj", "{9FA8FD71-DC61-4C5C-B002-830BC3CD4973}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.OpenApi", "Mall.OpenApi\Mall.OpenApi.csproj", "{9FA8FD71-DC61-4C5C-B002-830BC3CD4973}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.WebCore", "Mall.WebCore\Mall.WebCore.csproj", "{3153EE4A-1FA7-49C7-B9EA-7EA7A1AFD42A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.WebCore", "Mall.WebCore\Mall.WebCore.csproj", "{3153EE4A-1FA7-49C7-B9EA-7EA7A1AFD42A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.OcelotGateway", "Mall.OcelotGateway\Mall.OcelotGateway.csproj", "{F0DBAB7A-BF21-4B13-AA1A-61A928BEADFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{3153EE4A-1FA7-49C7-B9EA-7EA7A1AFD42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3153EE4A-1FA7-49C7-B9EA-7EA7A1AFD42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3153EE4A-1FA7-49C7-B9EA-7EA7A1AFD42A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0DBAB7A-BF21-4B13-AA1A-61A928BEADFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0DBAB7A-BF21-4B13-AA1A-61A928BEADFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0DBAB7A-BF21-4B13-AA1A-61A928BEADFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0DBAB7A-BF21-4B13-AA1A-61A928BEADFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +109,7 @@ Global
 		{1345B982-A221-4DC9-AC7E-1E92D0F47C5F} = {5E0C0427-41DD-4794-8FE0-5ACB531539D4}
 		{9FA8FD71-DC61-4C5C-B002-830BC3CD4973} = {EA25AC27-705F-4C53-962E-381E65AEA5E9}
 		{3153EE4A-1FA7-49C7-B9EA-7EA7A1AFD42A} = {D64A437F-7422-45B2-85DE-2F9F2D7500F2}
+		{F0DBAB7A-BF21-4B13-AA1A-61A928BEADFF} = {2A98A242-E72F-4A9D-9615-04658D08683D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B737E1E-47A8-4682-BC77-F2A2485E2052}

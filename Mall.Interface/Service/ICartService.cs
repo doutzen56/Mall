@@ -6,20 +6,20 @@ namespace Mall.Interface.Service
     /// <summary>
     /// 购物车操作
     /// </summary>
-    public interface ICartService : ServiceBase
+    public interface ICartService : IMallService
     {
         /// <summary>
         /// 添加购物车
         /// </summary>
         /// <param name="cart"></param>
         /// <param name="user"></param>
-        void AddCart(Cart cart, UserInfo user);
+        void AddCart(CartDto cart, UserInfo user);
         /// <summary>
         /// 查询购物车
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        List<Cart> ListCart(UserInfo user);
+        List<CartDto> ListCart(UserInfo user);
         /// <summary>
         /// 根据id更新商品数量
         /// </summary>

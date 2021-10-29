@@ -24,23 +24,19 @@ namespace Mall.OpenApi.Controllers
         }
         [Route("addCart")]
         [HttpPost]
-        public RespResult AddCart([FromForm] Cart cart)
+        public RespResult AddCart([FromForm] CartDto cart)
         {
-            UserInfo user = base.HttpContext.GetCurrentUserInfo();
+            UserInfo user = HttpContext.GetCurrentUserInfo();
             cartService.AddCart(cart, user);
-            return RespResult.Ok();
+            return RespResult.Ok("添加成功");
         }
-        //[Route("/cart/{id}")]
-        //[HttpDelete]
-        //public JsonResult DeleteCart(List<int> ids)
-        //{
-        //    UserInfo user = base.HttpContext.GetCurrentUserInfo();
-        //    cartService.DeleteCarts(ids, user.Id);
-        //    return new JsonResult(new AjaxResult()
-        //    {
-        //        Result = true,
-        //        Message = "删除成功"
-        //    });
-        //}
+        [Route("cart/{id}")]
+        [HttpDelete]
+        public RespResult DeleteCart(List<int> ids)
+        {
+            UserInfo user = HttpContext.GetCurrentUserInfo();
+            cartService.DeleteCarts(ids, user.Id);
+            return RespResult.Ok("删除成功");
+        }
     }
 }

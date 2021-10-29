@@ -19,7 +19,7 @@ namespace Mall.Core.Repositories
     public class SqlFormatter<T>
     {
         #region 属性
-        private static string _table = typeof(T).Name;
+        private static string _table = $"[{typeof(T).Name}]";
         public static string SelectFieldString;
         public static string NoKeyFieldString;
         public static string KeyFieldString;
@@ -496,6 +496,7 @@ namespace Mall.Core.Repositories
             {
                 if (wroteSet)
                     builder.Append(",");
+                //这里不支持 s.stack-10 这样的计算，后续在做开发
                 var constant = ((binding as MemberAssignment).Expression as ConstantExpression);
                 builder.Append("[" + binding.Member.Name + "]");
                 builder.Append(" = @");

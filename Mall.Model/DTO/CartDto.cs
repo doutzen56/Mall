@@ -9,7 +9,7 @@ namespace Mall.Model.DTO
     /// <summary>
     /// 购物车
     /// </summary>
-    public class Cart
+    public class CartDto
     {
         /// <summary>
         /// 商品ID

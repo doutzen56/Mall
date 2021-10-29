@@ -4,9 +4,9 @@ using System;
 namespace Mall.Interface.Service
 {
     /// <summary>
-    /// Service基类
+    /// IService基类
     /// </summary>
-    public interface ServiceBase : ITransient
+    public interface IMallService : ITransient
     {
         /// <summary>
         /// Service版本号，方便跟踪代码使用

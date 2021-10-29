@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mall.Interface.Service
 {
-    public interface IGoodsService : ServiceBase
+    public interface IGoodsService : IMallService
     {
 
         bool Add(Goods goods);
@@ -19,6 +19,6 @@ namespace Mall.Interface.Service
         /// </summary>
         /// <param name="cart"></param>
         /// <returns></returns>
-        void DecreaseStock(Cart cart);
+        void DecreaseStock(CartDto cart);
     }
 }

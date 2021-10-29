@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mall.Interface.Service
 {
-    public interface IMemberService : ServiceBase
+    public interface IMemberService : IMallService
     {
         Member QueryUser(string name, string pwd);
     }

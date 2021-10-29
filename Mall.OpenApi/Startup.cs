@@ -69,13 +69,17 @@ namespace Mall.OpenApi
             #endregion
 
             #region Ioc注入
+            //Repository注入
             services.AddTransient(typeof(IReadRepository<>), typeof(Repository<>));
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            //redis客户端注入
             services.AddSingleton<RedisProvider, RedisProvider>();
+            //jwt工具类注入
             services.AddSingleton<ICustomJwtService, CustomHSJwtService>();
             services.Configure<JwtTokenOptions>(this.Configuration.GetSection("JwtTokenOptions"));
             services.Configure<RedisConnOptions>(this.Configuration.GetSection("RedisConnOptions"));
-            services.DefaultRegister();
+            //普通service类注入
+            services.DefaultServiceRegister();
             #endregion
 
         }

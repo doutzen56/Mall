@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mall.Interface.Service
 {
-    public interface ISysAdminService : ServiceBase
+    public interface ISysAdminService : IMallService
     {
         bool Login(string name, string pwd);
     }

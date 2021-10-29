@@ -19,7 +19,7 @@ namespace Mall.Common.Ioc
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection DefaultRegister(this IServiceCollection services)
+        public static IServiceCollection DefaultServiceRegister(this IServiceCollection services)
         {
            
             var allTypes = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
