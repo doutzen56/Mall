@@ -24,7 +24,19 @@
         }
         public static RespResult Ok(object data)
         {
-            return new RespResult() { Status = 0, Msg = "ok", Data = data };
+            return Ok(0, "操作成功！", data);
+        }
+        public static RespResult Ok(string msg)
+        {
+            return Ok(0, msg, null);
+        }
+        public static RespResult Ok(string msg, object data)
+        {
+            return Ok(0, msg, data);
+        }
+        public static RespResult Ok(int status, string msg, object data)
+        {
+            return new RespResult() { Status = status, Msg = msg, Data = data };
         }
         public static RespResult Fail()
         {
@@ -32,7 +44,15 @@
         }
         public static RespResult Fail(object data)
         {
-            return new RespResult() { Status = 1, Msg = "操作失败", Data = data };
+            return Ok(1, "操作失败", data);
+        }
+        public static RespResult Fail(string msg)
+        {
+            return Ok(1, msg, null);
+        }
+        public static RespResult Fail(int status, string msg, object data)
+        {
+            return new RespResult() { Status = status, Msg = msg, Data = data };
         }
     }
 

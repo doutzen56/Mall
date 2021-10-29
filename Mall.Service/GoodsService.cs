@@ -21,6 +21,7 @@ namespace Mall.Service
         public void DecreaseStock(Cart cart)
         {
             var stock = goodsRes.GetEx(a => a.Id == cart.GoodsId, rs => rs.Stock);
+            //判断库存是否充足
             if (cart.Count > stock)
             {
                 throw new Exception("库存不足,扣减失败");

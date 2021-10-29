@@ -5,6 +5,7 @@ using Mall.Core.Repositories.Enum;
 using Mall.Core.Repositories.Expressions;
 using Mall.Core.Repositories.Interface;
 using Mall.Core.Repositories.Model;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Mall.Core.Repositories
         #region 属性/构造函数
 
         private IDbConnection conn;
+        private readonly IConfiguration config;
         private static bool isNonKey = SqlFormatter<T>.KeyFields.IsNull() || SqlFormatter<T>.KeyFields.Length == 0;
         public Repository(string connectString)
         {
@@ -33,9 +35,10 @@ namespace Mall.Core.Repositories
             var str = getConnectionString();
             this.conn = new SqlConnection(str);
         }
-        public Repository() 
+        public Repository(IConfiguration configuration) 
         {
-            this.conn = new SqlConnection("");
+            this.config = configuration;
+            this.conn = new SqlConnection(config["ConnectionStrings:Url"]);
         }
         public IDbConnection Conn
         {

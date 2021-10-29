@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mall.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Mall.Interface.Service
 {
     public interface IMemberService : ServiceBase
     {
-        bool Login(string name, string pwd);
+        Member QueryUser(string name, string pwd);
     }
 }
