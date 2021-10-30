@@ -16,8 +16,11 @@ CREATE TABLE [dbo].[Goods] (
     [Color] INT           NOT NULL,
     [Price] DECIMAL (18)  NOT NULL,
     [Stock] INT           NOT NULL,
+    [Status] INT NOT NULL, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 go
 CREATE TABLE [dbo].[Member] (
     [Id]       INT           IDENTITY (1, 1) NOT NULL,
@@ -36,8 +39,8 @@ CREATE TABLE [dbo].[SysAdmin] (
 );
 go
 SET IDENTITY_INSERT [dbo].[Goods] ON
-INSERT INTO [dbo].[Goods] ([Id], [Name], [Code], [Color], [Price], [Stock]) VALUES (1, N'手机', N'SJ', 1, CAST(998 AS Decimal(18, 0)), 20)
-INSERT INTO [dbo].[Goods] ([Id], [Name], [Code], [Color], [Price], [Stock]) VALUES (2, N'IPhoneX Max', N'X Max', 2, CAST(8800 AS Decimal(18, 0)), 2)
+INSERT INTO [dbo].[Goods] ([Id], [Name], [Code], [Color], [Price], [Stock], [Status]) VALUES (1, N'手机', N'SJ', 1, CAST(998 AS Decimal(18, 0)), 20, 1)
+INSERT INTO [dbo].[Goods] ([Id], [Name], [Code], [Color], [Price], [Stock], [Status]) VALUES (2, N'IPhoneX Max', N'X Max', 2, CAST(8800 AS Decimal(18, 0)), 2, 1)
 SET IDENTITY_INSERT [dbo].[Goods] OFF
 go
 SET IDENTITY_INSERT [dbo].[Member] ON

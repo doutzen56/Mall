@@ -20,7 +20,7 @@
 
         public static RespResult Ok()
         {
-            return Ok(null);
+            return Ok(data: null);
         }
         public static RespResult Ok(object data)
         {
@@ -40,7 +40,7 @@
         }
         public static RespResult Fail()
         {
-            return Fail(null);
+            return Fail(data: null);
         }
         public static RespResult Fail(object data)
         {

@@ -42,7 +42,12 @@ namespace Mall.Service
         /// <returns></returns>
         public bool Update(Goods goods)
         {
-            return goodsRes.Update(goods) > 0;
+            var resutlt = goodsRes.Update(goods) > 0;
+            if (resutlt)
+            {
+                //推送数据
+            }
+            return resutlt;
         }
     }
 }

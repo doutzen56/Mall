@@ -33,7 +33,7 @@ namespace Mall.Hubs
             {
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins(new string[] { "http://localhost:60600/"});
+                    policy.WithOrigins(new string[] { "http://localhost:60600/" });
                 });
             });
             #endregion
@@ -56,7 +56,7 @@ namespace Mall.Hubs
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<UpdatePriceHub>("/updatePrice");
+                endpoints.MapHub<UpdatePriceHub>("/chathub");
             });
         }
     }

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.11" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mall.Common\Mall.Common.csproj" />
+    <ProjectReference Include="..\Mall.Core\Mall.Core.csproj" />
+    <ProjectReference Include="..\Mall.Interface\Mall.Interface.csproj" />
+    <ProjectReference Include="..\Mall.Model\Mall.Model.csproj" />
+    <ProjectReference Include="..\Mall.Service\Mall.Service.csproj" />
+  </ItemGroup>
+
+</Project>
