@@ -1,17 +1,11 @@
 ﻿using Mall.AminApi.Hubs;
 using Mall.Common.Models;
 using Mall.Interface.Service;
-using Mall.Model.DTO;
 using Mall.Model.Models;
-using Mall.WebCore;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Mall.AminApi.Controllers
 {

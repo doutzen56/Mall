@@ -1,4 +1,5 @@
-﻿using Mall.Core.Redis;
+﻿using Mall.Common.Extend;
+using Mall.Core.Redis;
 using Mall.Interface.Service;
 using Mall.Model.DTO;
 using Mall.Service.Base;
@@ -66,7 +67,7 @@ namespace Mall.Service
             List<CartDto> carts = new List<CartDto>();
             foreach (var item in hashOps)
             {
-                carts.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<CartDto>(item));
+                carts.Add(item.FromJson<CartDto>());
             }
             return carts;
         }

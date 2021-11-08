@@ -1,8 +1,7 @@
 ﻿using Mall.Common.Ioc.IocOptions;
+using Mall.Core.Consts;
 using Mall.Interface.Jwt;
-using Mall.Model.DTO;
 using Mall.Model.Models;
-using Mall.WebCore.Consts;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;

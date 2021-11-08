@@ -1,7 +1,4 @@
-﻿using Mall.WebCore;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.SignalR;
-using System;
+﻿using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
 namespace Mall.AminApi.Hubs

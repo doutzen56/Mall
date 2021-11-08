@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Mall.Model.EFModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,13 @@ namespace Mall.Test.Ioc
             var list = assembly.GetTypes()
                   .Where(a => a != baseType && baseType.IsAssignableFrom(a))
                   .ToList();
+        }
+
+        [TestMethod]
+        public void MyTestMethod()
+        {
+            MallContext res = new MallContext("server=localhost;port=3306;database=mall;user id=root;password=123456");
+            var a = res.TbBrand.Count();
         }
     }
 }

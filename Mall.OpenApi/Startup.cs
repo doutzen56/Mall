@@ -1,11 +1,13 @@
 using Mall.Common.Ioc;
 using Mall.Common.Ioc.IocOptions;
+using Mall.Core.Consts;
 using Mall.Core.Filter;
 using Mall.Core.Redis;
 using Mall.Core.Repositories;
 using Mall.Core.Repositories.Interface;
 using Mall.Interface.Jwt;
 using Mall.Service.Jwt;
+using Mall.WebCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -46,7 +48,7 @@ namespace Mall.OpenApi
 
             #region jwt校验  
             JwtTokenOptions tokenOptions = new JwtTokenOptions();
-            Configuration.Bind("JwtTokenOptions", tokenOptions);
+            Configuration.Bind(OptionsConst.JWT_TOKEN_OPTIONS, tokenOptions);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)//Scheme
             .AddJwtBearer(options =>
@@ -69,15 +71,17 @@ namespace Mall.OpenApi
             #endregion
 
             #region Ioc注入
-            //Repository注入
-            services.AddTransient(typeof(IReadRepository<>), typeof(Repository<>));
-            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
-            //redis客户端注入
-            services.AddSingleton<RedisProvider, RedisProvider>();
-            //jwt工具类注入
-            services.AddSingleton<ICustomJwtService, CustomHSJwtService>();
-            services.Configure<JwtTokenOptions>(this.Configuration.GetSection("JwtTokenOptions"));
-            services.Configure<RedisConnOptions>(this.Configuration.GetSection("RedisConnOptions"));
+            ////Repository注入
+            //services.AddTransient(typeof(IReadRepository<>), typeof(Repository<>));
+            //services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            ////redis客户端注入
+            //services.AddSingleton<RedisProvider, RedisProvider>();
+            ////jwt工具类注入
+            //services.AddSingleton<ICustomJwtService, CustomHSJwtService>();
+            //services.Configure<JwtTokenOptions>(this.Configuration.GetSection(OptionsConst.JWT_TOKEN_OPTIONS));
+            //services.Configure<RedisConnOptions>(this.Configuration.GetSection(OptionsConst.REDIS_CONN_OPTIONS));
+            services.Bootstrap(Configuration);
+
             //普通service类注入
             services.DefaultServiceRegister();
             #endregion

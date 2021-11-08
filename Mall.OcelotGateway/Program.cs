@@ -18,6 +18,11 @@ namespace Mall.OcelotGateway
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostBuilderContext, configurationBuilder) =>
+                {
+                    //指定自定义配置文件
+                    configurationBuilder.AddJsonFile("apiGetway.json", optional: false, reloadOnChange: true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

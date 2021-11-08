@@ -1,6 +1,6 @@
 ﻿using Mall.Common.Models;
+using Mall.Core.Consts;
 using Mall.Model.DTO;
-using Mall.WebCore.Consts;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,0 +1,21 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/{controller}/{url}", //上游请求地址--网关
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "PATCH", "Delete", "Options" ],
+      "DownstreamPathTemplate": "/api/{controller}/{url}", //服务地址--url变量
+      "DownstreamScheme": "http",
+      "DownstreamHeaderTransform": {
+        "Access-Control-Allow-Origin": "http://localhost:8070", //不存在就添加
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Headers": "*"
+      },
+      "DownstreamHostAndPorts": [ // 下游服务的 host 和 port 设置，支持多实例
+        {
+          "Host": "localhost",
+          "Port": 9000
+        }
+      ]
+    }
+  ]
+}
