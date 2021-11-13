@@ -1,3 +1,6 @@
+using Mall.Common.Ioc;
+using Mall.Core.Filter;
+using Mall.WebCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +29,17 @@ namespace Mall.OrderMicroservice
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(o =>
+            {
+                o.Filters.Add<ExceptionFilter>();
+                o.Filters.Add<RequestLogFilter>();
+            }).AddNewtonsoftJson();
+
+            services.Bootstrap(Configuration);
+
+            //ÆÕÍ¨serviceÀà×¢Èë
+            services.DefaultServiceRegister();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mall.OrderMicroservice", Version = "v1" });

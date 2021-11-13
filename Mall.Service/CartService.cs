@@ -5,12 +5,13 @@ using Mall.Model.DTO;
 using Mall.Service.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mall.Service
 {
     public class CartService : ServiceBase, ICartService
     {
-        private RedisProvider redis;
+        private readonly RedisProvider redis;
         public CartService(RedisProvider redis)
         {
             this.redis = redis;
@@ -39,15 +40,12 @@ namespace Mall.Service
 
         public void DeleteCarts(List<int> ids, string userId)
         {
-            string key = KEY_PREFIX + userId;
+            var key = KEY_PREFIX + userId;
             var hashOps = redis.GetHashKeys(key);
-            foreach (var item in ids)
+            foreach (var item in ids.Where(item => hashOps.Contains(item.ToString())))
             {
-                if (hashOps.Contains(item.ToString()))
-                {
-                    //删除商品
-                    redis.RemoveEntryFromHash(key, item.ToString());
-                }
+                //删除商品
+                redis.RemoveEntryFromHash(key, item.ToString());
             }
         }
 
@@ -60,7 +58,7 @@ namespace Mall.Service
                 return null;
             }
             var hashOps = redis.GetHashValues(key);
-            if (hashOps == null || hashOps.Count <= 0)
+            if (hashOps is not { Count: > 0 })
             {
                 return null;
             }

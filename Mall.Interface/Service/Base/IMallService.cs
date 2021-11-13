@@ -11,9 +11,6 @@ namespace Mall.Interface.Service
         /// <summary>
         /// Service版本号，方便跟踪代码使用
         /// </summary>
-        public virtual string Version
-        {
-            get { return Guid.NewGuid().ToString("N"); }
-        }
+        public virtual string Version => Guid.NewGuid().ToString("N");
     }
 }

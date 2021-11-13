@@ -7,20 +7,25 @@ using Mall.Interface.Jwt;
 using Mall.Model.DTO;
 using Mall.Service.Jwt;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Mall.WebCore
 {
     public static class CommonExtend
     {
+        public static bool IsAjaxRequest(this HttpRequest request)
+        {
+            string header = request.Headers["X-Requested-With"];
+            return "XMLHttpRequest".Equals(header);
+        }
         /// <summary>
         /// 基于HttpContext,当前鉴权方式解析，获取用户信息
         /// </summary>
@@ -43,6 +48,24 @@ namespace Mall.WebCore
         /// <returns></returns>
         public static IServiceCollection Bootstrap(this IServiceCollection services, IConfiguration cfg)
         {
+            JwtTokenOptions tokenOptions = new JwtTokenOptions();
+            cfg.Bind(OptionsConst.JWT_TOKEN_OPTIONS, tokenOptions);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)//Scheme
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,//是否验证Issuer
+                    ValidateAudience = true,//是否验证Audience
+                    ValidateLifetime = false,//是否验证失效时间
+                    ValidateIssuerSigningKey = true,//是否验证SecurityKey
+                    ValidAudience = tokenOptions.Audience,//
+                    ValidIssuer = tokenOptions.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecurityKey))
+                };
+            });
+
             services.AddTransient(typeof(IReadRepository<>), typeof(Repository<>));
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             //redis客户端注入

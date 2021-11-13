@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace Mall.OpenApi.Controllers
+namespace Mall.CartMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [Authorize]
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly ICartService cartService;
+        private ICartService cartService;
         public CartController(ICartService cartService)
         {
             this.cartService = cartService;

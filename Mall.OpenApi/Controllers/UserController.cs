@@ -2,14 +2,10 @@
 using Mall.Core.Consts;
 using Mall.Model.DTO;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Mall.OpenApi.Controllers
 {
@@ -22,20 +18,28 @@ namespace Mall.OpenApi.Controllers
         {
             this.logger = logger;
         }
-        [Route("verify")]
-        [HttpGet]
+
+        [Route("verify"), HttpGet]
         public RespResult CurrentUser()
         {
-            IEnumerable<Claim> claimlist = HttpContext.AuthenticateAsync().Result.Principal.Claims;
-            if (claimlist != null && claimlist.Count() > 0)
+            var resultPrincipal = HttpContext.AuthenticateAsync().Result.Principal;
+            if (resultPrincipal != null)
             {
-                string userName = claimlist.FirstOrDefault(u => u.Type == AuthConst.AUTH_NAME).Value;
-                string id = claimlist.FirstOrDefault(u => u.Type == AuthConst.AUTH_ID).Value;
-                return RespResult.Ok(new UserInfo { Id = id, UserName = userName });
+                var claimList = resultPrincipal.Claims as Claim[] ?? resultPrincipal.Claims.ToArray();
+                if (claimList.Any())
+                {
+                    var userName = claimList.FirstOrDefault(u => u.Type == AuthConst.AUTH_NAME)?.Value;
+                    var id = claimList.FirstOrDefault(u => u.Type == AuthConst.AUTH_ID)?.Value;
+                    return RespResult.Ok(new UserInfo { Id = id, UserName = userName });
+                }
+                else
+                {
+                    return RespResult.Fail("Token无效，请重新登陆");
+                }
             }
             else
             {
-                return RespResult.Fail("Token无效，请重新登陆");
+                return RespResult.Fail("登录已过期，请重新登录");
             }
         }
     }

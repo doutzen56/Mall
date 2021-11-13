@@ -9,7 +9,7 @@ namespace Mall.Service
 {
     public class GoodsService : ServiceBase, IGoodsService
     {
-        private IRepository<Goods> goodsRes;
+        private readonly IRepository<Goods> goodsRes;
         public GoodsService(IRepository<Goods> goodsRes)
         {
             this.goodsRes = goodsRes;
@@ -42,12 +42,12 @@ namespace Mall.Service
         /// <returns></returns>
         public bool Update(Goods goods)
         {
-            var resutlt = goodsRes.Update(goods) > 0;
-            if (resutlt)
+            var result = goodsRes.Update(goods) > 0;
+            if (result)
             {
                 //推送数据
             }
-            return resutlt;
+            return result;
         }
     }
 }
