@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
@@ -20,11 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Mall.CartMicroservice\Mall.CartMicroservice.csproj" />
     <ProjectReference Include="..\Mall.Common\Mall.Common.csproj" />
     <ProjectReference Include="..\Mall.Core\Mall.Core.csproj" />
     <ProjectReference Include="..\Mall.Interface\Mall.Interface.csproj" />
     <ProjectReference Include="..\Mall.Model\Mall.Model.csproj" />
+    <ProjectReference Include="..\Mall.OrderMicroservice\Mall.OrderMicroservice.csproj" />
     <ProjectReference Include="..\Mall.Service\Mall.Service.csproj" />
+    <ProjectReference Include="..\Mall.UserMicroservice\Mall.UserMicroservice.csproj" />
+    <ProjectReference Include="..\Mall.WebCore\Mall.WebCore.csproj" />
   </ItemGroup>
 
 </Project>

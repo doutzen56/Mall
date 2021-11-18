@@ -35,11 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.OcelotGateway", "Mall.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.AminApi", "Mall.AminApi\Mall.AminApi.csproj", "{748AC2FE-BC04-4967-97E8-8E68C9969250}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.UserMicroservice", "Mall.UserMicroservice\Mall.UserMicroservice.csproj", "{29843D6D-BB9D-488E-B5E2-AFA8E66FBC83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.UserMicroservice", "Mall.UserMicroservice\Mall.UserMicroservice.csproj", "{29843D6D-BB9D-488E-B5E2-AFA8E66FBC83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.CartMicroservice", "Mall.CartMicroservice\Mall.CartMicroservice.csproj", "{B6F70932-2980-47A7-92CB-5BAC696B54C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.CartMicroservice", "Mall.CartMicroservice\Mall.CartMicroservice.csproj", "{B6F70932-2980-47A7-92CB-5BAC696B54C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.OrderMicroservice", "Mall.OrderMicroservice\Mall.OrderMicroservice.csproj", "{DCCFB1D4-CAA4-48A2-B143-F9E49B704BB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.OrderMicroservice", "Mall.OrderMicroservice\Mall.OrderMicroservice.csproj", "{DCCFB1D4-CAA4-48A2-B143-F9E49B704BB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

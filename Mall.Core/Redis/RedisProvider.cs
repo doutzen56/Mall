@@ -17,9 +17,9 @@ namespace Mall.Core.Redis
     {
         private readonly RedisConnOptions _RedisOptions;
 
-        public RedisProvider(IOptionsMonitor<RedisConnOptions> jwtTokenOptions)
+        public RedisProvider(IOptionsMonitor<RedisConnOptions> redisTokenOptions)
         {
-            this._RedisOptions = jwtTokenOptions.CurrentValue;
+            this._RedisOptions = redisTokenOptions.CurrentValue;
             client = new RedisClient(_RedisOptions.Host, _RedisOptions.Prot, null, _RedisOptions.DB);
         }
 
@@ -27,6 +27,13 @@ namespace Mall.Core.Redis
         {
             return client;
         }
+#if DEBUG
+        public RedisProvider(RedisClient client)
+        {
+            if (client != null)
+                this.client = client;
+        }
+#endif
         private IRedisClient client;
 
         public void Dispose()
