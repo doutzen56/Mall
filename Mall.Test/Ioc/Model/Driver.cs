@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mall.Test.Ioc
 {
-    public class Driver:Person
+    public class Driver : IPerson
     {
     }
 }

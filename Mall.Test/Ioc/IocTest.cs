@@ -17,7 +17,7 @@ namespace Mall.Test.Ioc
             var assembly = AppDomain.CurrentDomain.GetAssemblies()
                             .Where(a => a.GetName().FullName.StartsWith("Mall.Test"))
                             .FirstOrDefault();
-            var baseType = typeof(Person);
+            var baseType = typeof(IPerson);
             var list = assembly.GetTypes()
                   .Where(a => a != baseType && baseType.IsAssignableFrom(a))
                   .ToList();
